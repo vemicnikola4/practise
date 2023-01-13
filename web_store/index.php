@@ -1,7 +1,7 @@
 <?php
 session_start();
 include 'functions.php';
-
+include 'class_database.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +19,7 @@ include 'functions.php';
     if (!isset( $_SESSION['user'] ) && !isset( $_COOKIE['user'] )){
         create_form('Sing_in','verify_email.php', 'POST' , ['hidden','email','text','text','text','password','submit'], ['action','email','name','last_name','phone_number','password','submit'], ['register','','','','','','submit',],['','email','name','last name', 'phone number', 'password','']);
     }else{
-        echo "<h1>HELLO USER ARE WELCOME<h1>";
+        echo "<h1>HELLO USER YOU ARE WELCOME<h1>";
     }
   
     echo "</div>";
@@ -27,6 +27,5 @@ include 'functions.php';
     create_footer( ['home','products','login','logout'] );
     ?>
     
-
 </body>
 </html>

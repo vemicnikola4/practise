@@ -60,9 +60,10 @@ if ( isset($_POST['action']) && $_POST['action'] =='updateing_product' ){
     $new_picture = $_POST['picture'];
     $new_price = $_POST['price'];
     $new_quantity = $_POST['quantity'];
+    
+    $base -> delite_product($barcode); 
 
     $all_products = $base -> all_products();
-    $base -> delite_product($barcode); 
 
     for ( $i = 0;  $i <count ( $all_products ); $i++){
         if ( $new_barcode == $all_products[$i]['barcode'] ){

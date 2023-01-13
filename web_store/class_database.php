@@ -69,6 +69,9 @@ class Database{
         $quantity = $this -> conn -> real_escape_string ($quantity );
         $insert = $this -> comand ( "INSERT INTO `products`(`barcode`, `name`, `category`, `description`, `picture`, `price`, `quantity`) VALUES ('$barcode', '$name', '$category', '$description', '$picture', $price, $quantity)" );  
     }
+    function delite_product($barcode){
+        $delite = $this -> comand ( " DELETE FROM products WHERE barcode=$barcode ");
+    }
 }
 $base= new Database('zadatak_web_store');
 ?>

@@ -24,6 +24,9 @@ if (!isset($_SESSION['verification_code'])){
                 if ( $email == $all_users[$i]['email']);
                 echo "<p>You already have an account.</p>";
                 echo "<div class='link'><a href='login.php?action=login'>Go to login</a></div>";
+                echo "</div>";
+                echo "</div>";
+                create_footer( ['home','products','login','logout'] );
                 exit;
             }
 

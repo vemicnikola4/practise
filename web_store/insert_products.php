@@ -1,5 +1,10 @@
 <?php
 include "class_database.php";
+include "functions.php";
+echo "<div class='main_container'>";
+
+create_header( ['home','products','login','logout'] );
+echo "<div class='content'>";
 if ( isset($_POST['action']) && $_POST['action'] =='insert_product' ){
     $barcode = $_POST['barcode'];
     $name = $_POST['name'];
@@ -14,7 +19,11 @@ if ( isset($_POST['action']) && $_POST['action'] =='insert_product' ){
     for ( $i = 0;  $i <count ( $all_products ); $i++){
         if ( $barcode == $all_products[$i]['barcode'] ){
             echo "<a href='product_forms.php'>Back to form</a><br>";
-            die ('Barcode invalid');
+            echo "<p>Barcode invalide</p>";
+            echo "</div>";
+            echo "</div>";
+            create_footer( ['home','products','login','logout','product_forms'] );
+            exit;
         }
 
     }
@@ -54,8 +63,9 @@ if ( isset($_GET['action']) && $_GET['action'] =='confirm_new_product'){
         echo "<P>Not Inserted</p>";
     }else{
         header ('Location:product_forms.php?action=inserted');
-
     }
-
 }
+echo "</div>";
+echo "</div>";
+create_footer( ['home','products','login','logout','product_forms'] );
 ?>

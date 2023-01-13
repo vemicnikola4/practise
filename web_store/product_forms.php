@@ -7,6 +7,9 @@ if ( isset($_GET['action']) && $_GET['action'] =='inserted'){
 if ( isset($_GET['action']) && $_GET['action'] =='product_delitet'){
     echo "<p>Product succssesfully deletet</p>";
 }
+if ( isset($_GET['action']) && $_GET['action'] =='quantity_added'){
+    echo "<p>Quantity added succssesfully</p>";
+}
 if ( isset($_POST['action']) && $_POST['action'] =='login_employee'){
     $employee_username = 'nikola@4.com';
     $employee_pasword = 'nikola';
@@ -53,7 +56,7 @@ if ( isset($_POST['action']) && $_POST['action'] =='login_employee'){
         </form>
         </div>
         <?php
-            create_form('Add product quantity','insert_products.php', 'POST', ['hidden','text','text','submit'], ['action','barcode','quantity','submit'], ['add_quantity','','','submit'], ['','barcode','add quantity','']);
+            create_form('Add product quantity','add_product_quantity.php', 'POST', ['hidden','text','text','submit'], ['action','barcode','quantity','submit'], ['add_quantity','','','submit'], ['','barcode','add quantity','']);
 
             create_form('Delite product','delite_product.php', 'POST', ['hidden','text','submit'], ['action','barcode','submit'], ['delite_product','','delete'], ['','enter barcode','']);
     }

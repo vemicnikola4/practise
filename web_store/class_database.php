@@ -72,6 +72,21 @@ class Database{
     function delite_product($barcode){
         $delite = $this -> comand ( " DELETE FROM products WHERE barcode=$barcode ");
     }
+    function add_quantity($barcode,$add_quantity){
+        $product = $this -> select( "SELECT * FROM products WHERE barcode=$barcode ");
+        $product_quantity = $product['array'][0]['quantity'];
+        $new_quantity = $product_quantity + $add_quantity;
+        $update_quantity = $this -> comand ( "UPDATE `products` SET `quantity`=$new_quantity WHERE barcode=$barcode");
+    }
+    function reduce_quantity($barcode,$reduce_quantiti){
+        $product = $this -> select( "SELECT * FROM products WHERE barcode=$barcode ");
+        $product_quantity = $product['array'][0]['quantity'];
+        $new_quantity = $product_quantity - $reduce_quantiti;
+        if ( $new_quantity < 0){
+            $new_quantity = 0;
+        }
+        $update_quantity = $this -> comand ( "UPDATE `products` SET `quantity`=$new_quantity WHERE barcode=$barcode");
+    }
 }
 $base= new Database('zadatak_web_store');
 ?>

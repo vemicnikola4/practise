@@ -10,6 +10,9 @@ if ( isset($_GET['action']) && $_GET['action'] =='product_delitet'){
 if ( isset($_GET['action']) && $_GET['action'] =='quantity_added'){
     echo "<p>Quantity added succssesfully</p>";
 }
+if ( isset($_GET['action']) && $_GET['action'] =='product_updated'){
+    echo "<p>Product updated succssesfully</p>";
+}
 if ( isset($_POST['action']) && $_POST['action'] =='login_employee'){
     $employee_username = 'nikola@4.com';
     $employee_pasword = 'nikola';
@@ -43,10 +46,15 @@ if ( isset($_POST['action']) && $_POST['action'] =='login_employee'){
         <div class='form_div' id='new_preoduct_form_div'>
         <h3>New product</h3>
         <form id="new_product_form" action="insert_products.php" method='POST'>
-            <input type="hidden" name="action" value="insert_product"><br>
+            <input type="hidden" name="action" value="insert_product">
             <input type="text" name="barcode" placeholder="barcode" required><br>
             <input type="text" name="name" placeholder="name" required><br>
-            <input type="text" name="category" placeholder="category" required><br>
+            <select name="category" >
+                <option value="obuca">Obuca</option>
+                <option value="odeca">Odeca</option>
+                <option value="nakit">Nakit</option>
+                <option value="kucni_aparati">Kucni aparati</option>
+            </select><br>
             <textarea style='font-family:roboto; color:grey' name="description" required>Enter description</textarea><br>
             <input type="text" name="picture" placeholder="enter picture link" required><br>
             <input type="text" name="price" placeholder="price" required><br>
@@ -56,6 +64,8 @@ if ( isset($_POST['action']) && $_POST['action'] =='login_employee'){
         </form>
         </div>
         <?php
+            create_form('Update product','update_product.php', 'POST', ['hidden','text','submit'], ['action','barcode','submit'], ['update_product','','submit'], ['','enter barcode','']);
+
             create_form('Add product quantity','add_product_quantity.php', 'POST', ['hidden','text','text','submit'], ['action','barcode','quantity','submit'], ['add_quantity','','','submit'], ['','barcode','add quantity','']);
 
             create_form('Delite product','delite_product.php', 'POST', ['hidden','text','submit'], ['action','barcode','submit'], ['delite_product','','delete'], ['','enter barcode','']);

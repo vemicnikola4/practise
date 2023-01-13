@@ -25,6 +25,7 @@ include 'class_database.php';
     echo "</div>";
     echo "</div>";
     create_footer( ['home','products','login','logout','product_forms'] );
+    
     ?>
     
 </body>

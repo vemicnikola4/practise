@@ -27,6 +27,7 @@ if ( isset($_POST['action']) && $_POST['action'] =='insert_product' ){
         }
 
     }
+   
 
 ?>
     <div class='table_div' style='border:solid black; width:250px'>
@@ -49,6 +50,35 @@ if ( isset($_POST['action']) && $_POST['action'] =='insert_product' ){
     </div>
     <?php
 
+}
+if ( isset($_POST['action']) && $_POST['action'] =='updateing_product' ){
+    $barcode = $_POST['old_barcode'];
+    $new_barcode = $_POST['barcode'];
+    $new_name = $_POST['name'];
+    $new_category = $_POST['category'];
+    $new_description = $_POST['description'];
+    $new_picture = $_POST['picture'];
+    $new_price = $_POST['price'];
+    $new_quantity = $_POST['quantity'];
+
+    $all_products = $base -> all_products();
+    $base -> delite_product($barcode); 
+
+    for ( $i = 0;  $i <count ( $all_products ); $i++){
+        if ( $new_barcode == $all_products[$i]['barcode'] ){
+            echo "<a href='product_forms.php'>Back to form</a><br>";
+            echo "<p>Barcode invalide choose another barcode.</p>";
+            echo "</div>";
+            echo "</div>";
+            create_footer( ['home','products','login','logout','product_forms'] );
+            exit;
+        }
+    }
+    if ($base -> insert_product( $new_barcode, $new_name, $new_category, $new_description, $new_picture, $new_price, $new_quantity )){
+        echo "<P>Not Inserted</p>";
+    }else{
+        header ('Location:product_forms.php?action=product_updated');
+    }
 }
 if ( isset($_GET['action']) && $_GET['action'] =='confirm_new_product'){
     $barcode = $_GET['barcode'];

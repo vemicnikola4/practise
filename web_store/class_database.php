@@ -72,6 +72,9 @@ class Database{
     function delite_product($barcode){
         $delite = $this -> comand ( " DELETE FROM products WHERE barcode=$barcode ");
     }
+    function update_product( $barcode, $new_barcode, $new_name, $new_category, $new_description, $new_picture, $new_price, $new_quantity ){
+        $update_product = $this -> comand ( "UPDATE `products` SET `barcode`='$new_barcode',`name`='$new_name',`category`='$new_category',`description`='$new_description',`picture`='$new_picture',`price`=$new_price,`quantity`=$new_quantity WHERE barcode=$barcode" );
+    }
     function add_quantity($barcode,$add_quantity){
         $product = $this -> select( "SELECT * FROM products WHERE barcode=$barcode ");
         $product_quantity = $product['array'][0]['quantity'];

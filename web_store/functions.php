@@ -69,5 +69,25 @@ function validate_password($password){
         return false;
     }
 }
+function show_all_products($all_products){
+    echo "<div class='all_products_container'>";
+    echo "<div class='product_container'>";
+    echo "<table>";
+    for ( $i= 0; $i < count( $all_products ); $i++){
+        $name = $all_products[$i]['name'];
+        $picture = $all_products[$i]['picture'];
+        $description = $all_products[$i]['description'];
+        $price = $all_products[$i]['price'];
+        echo "<th><h3>".$name."</h3></th>";
+        echo "<tr><td><div class='image_div'><img style='border:solid black;width:200px; height:250px' src='pictures/".$picture."'></div></td></tr>";
+        echo "<tr><td>Price: ". $description. "</td></tr>";
+        echo "<tr><td>Price:". $price. " e</td></tr>";
+        echo "<tr><td> <a href='add_to_cart.php'>ADD TO CART</a></td></tr>";
+        echo "</div>";
+    }
+    echo "</table>";
+    echo "</div>";
+    echo "</div>";
+}
 
 ?>

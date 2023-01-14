@@ -58,6 +58,7 @@ if ( isset($_POST['action']) && $_POST['action'] =='updateing_product' ){
     $new_category = $_POST['category'];
     $new_description = $_POST['description'];
     $new_picture = str_replace(" ","",$_POST['picture']);
+    $new_price = $_POST['price'];
     $new_quantity = $_POST['quantity'];
     
     $base -> delite_product($barcode); 

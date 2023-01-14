@@ -25,11 +25,12 @@ include 'class_database.php';
     echo "</div>";
     echo "</div>";
     create_footer( ['home','products','login','logout','product_forms'] );
-    $str = " Hello World! ";
-    echo str_replace(" ","",$str);
-
+    
     
     ?>
-    
+    <img style='border:solid black;width:200px; height:250px' src='C:\xampp\htdocs\primeriphp\vezba\web_store\pictures\timberland-jacket-wheat-tb0a2cvpp571.jpg'>
+
+    </div>
+
 </body>
 </html>

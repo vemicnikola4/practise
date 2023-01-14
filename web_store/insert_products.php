@@ -6,11 +6,11 @@ echo "<div class='main_container'>";
 create_header( ['home','products','login','logout'] );
 echo "<div class='content'>";
 if ( isset($_POST['action']) && $_POST['action'] =='insert_product' ){
-    $barcode = $_POST['barcode'];
+    $barcode =str_replace(" ","",$_POST['barcode']);
     $name = $_POST['name'];
     $category = $_POST['category'];
     $description = $_POST['description'];
-    $picture = $_POST['picture'];
+    $picture = str_replace(" ","",$_POST['picture']);
     $price = $_POST['price'];
     $quantity = $_POST['quantity'];
 
@@ -53,12 +53,11 @@ if ( isset($_POST['action']) && $_POST['action'] =='insert_product' ){
 }
 if ( isset($_POST['action']) && $_POST['action'] =='updateing_product' ){
     $barcode = $_POST['old_barcode'];
-    $new_barcode = $_POST['barcode'];
+    $new_barcode = str_replace(" ","",$_POST['barcode']);
     $new_name = $_POST['name'];
     $new_category = $_POST['category'];
     $new_description = $_POST['description'];
-    $new_picture = $_POST['picture'];
-    $new_price = $_POST['price'];
+    $new_picture = str_replace(" ","",$_POST['picture']);
     $new_quantity = $_POST['quantity'];
     
     $base -> delite_product($barcode); 

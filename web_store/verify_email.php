@@ -4,7 +4,7 @@ include "functions.php";
 include "class_database.php";
 include "mail.php";
 
-//**Ver code for verifying email and registring */
+//**Ver code for verifying email/registring */
 if (!isset($_SESSION['verification_code'])){
     $_SESSION['verification_code'] = substr(str_shuffle('0123456789ABVGDEZIJKLMNOPRSTCUFHQW'),1,10);
 }
@@ -21,13 +21,15 @@ if (!isset($_SESSION['verification_code'])){
             $all_users = $base->all_users();
 
             for ( $i = 0; $i < count ( $all_users ); $i++ ){
-                if ( $email == $all_users[$i]['email']);
-                echo "<p>You already have an account.</p>";
-                echo "<div class='link'><a href='login.php?action=login'>Go to login</a></div>";
-                echo "</div>";
-                echo "</div>";
-                create_footer( ['home','products','login','logout'] );
-                exit;
+                if ( $email == $all_users[$i]['email']){
+                    echo "<p>You already have an account.</p>";
+                    echo "<div class='link'><a href='login.php?action=login'>Go to login</a></div>";
+                    echo "</div>";
+                    echo "</div>";
+                    create_footer( ['home','products','login','logout'] );
+                    exit;
+                }
+                
             }
 
             if ( validate_password( $password ) == false ){

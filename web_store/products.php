@@ -12,12 +12,16 @@ include "functions.php";
     <title>Products</title>
 </head>
 <body>
-    <div class='main_contaner' id='products_php_main_container'>
+    <div class='main_contaner' id='main_container_products'>
     <?php
     create_header( ['home','products','login','logout'] );
     echo "<div class='content'>";
     if ( isset($_SESSION['user'])){
         echo "<h1>HELLO USER YOU ARE WELCOME</h1>";
+
+        $all_products = $base -> all_products();
+
+        show_all_products($all_products);
     }else{
         echo "<div class='link'><a href='login.php?action=login'>LOG IN</a></div>";
         echo "<div class='link'><a href='index.php?action=login'>SING UP</a></div>";

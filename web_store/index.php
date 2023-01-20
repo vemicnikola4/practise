@@ -14,7 +14,7 @@ include 'class_database.php';
 <body>
     <div class='main_container'>
     <?php
-    create_header( ['home','products','login','logout'] );
+    create_header( ['home','products','cart','login','logout'] );
     echo "<div class='content'>";
     if (!isset( $_SESSION['user'] ) && !isset( $_COOKIE['user'] )){
         create_form('Sing_in','verify_email.php', 'POST' , ['hidden','email','text','text','text','password','submit'], ['action','email','name','last_name','phone_number','password','submit'], ['register','','','','','','submit',],['','email','name','last name', 'phone number', 'password','']);
@@ -24,13 +24,11 @@ include 'class_database.php';
   
     echo "</div>";
     echo "</div>";
-    create_footer( ['home','products','login','logout','product_forms'] );
+    create_footer( ['home','products','cart','login','logout','product_forms'] );
     
     
     ?>
-    <img style='border:solid black;width:200px; height:250px' src='C:\xampp\htdocs\primeriphp\vezba\web_store\pictures\timberland-jacket-wheat-tb0a2cvpp571.jpg'>
 
-    </div>
 
 </body>
 </html>

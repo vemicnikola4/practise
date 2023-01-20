@@ -26,6 +26,10 @@ if ( isset($_POST['action'])  &&  $_POST['action'] == 'login'){
             header ('Location:index.php');
         }else{
             echo "<p>Invalid email or password try again!</p>";
+            echo "</div>";
+            echo "</div>";
+            create_footer( ['home','products','login','logout'] );
+            exit;
         }
     }
 }

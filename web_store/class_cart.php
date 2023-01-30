@@ -35,8 +35,8 @@ class Cart{
             $barcode = $this->cart_items[$i]['barcode'];
             $item_total = $this->cart_items[$i]['price'] * $this->cart_items[$i]['quantity'];
         echo "<tr>";
-        echo "<td>".$this->cart_items[$i]['name']."</td>";
         echo "<td>".$this->cart_items[$i]['barcode']."</td>";
+        echo "<td>".$this->cart_items[$i]['name']."</td>";
         echo "<td>".$this->cart_items[$i]['price']." e</td>";
         echo "<td>".$this->cart_items[$i]['quantity']."</td>";
         echo "<td>".$item_total." e</td>";
@@ -98,10 +98,14 @@ class Cart{
     }
     function delete_cart(){
         for($i=0; $i<count($this->cart_items); $i++){
-            array_splice($this->cart_items, $i, 1);     
+            array_splice($this->cart_items, $i, );     
         }
         $_SESSION['cart'] = $this->cart_items;
     }
+    function cart_items(){
+        $cart_items = $this -> cart_items;
+    }
+
 }
 $cart = new Cart();
 ?>

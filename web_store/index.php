@@ -19,7 +19,8 @@ include 'class_database.php';
     if (!isset( $_SESSION['user'] ) && !isset( $_COOKIE['user'] )){
         create_form('Sing_in','verify_email.php', 'POST' , ['hidden','email','text','text','text','password','submit'], ['action','email','name','last_name','phone_number','password','submit'], ['register','','','','','','submit',],['','email','name','last name', 'phone number', 'password','']);
     }else{
-        echo "<h1>HELLO USER YOU ARE WELCOME<h1>";
+        header ('Location:products.php');
+
     }
   
     echo "</div>";

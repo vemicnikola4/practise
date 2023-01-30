@@ -16,15 +16,19 @@ include 'class_cart.php';
     <div class='main_container' id='main_container_cart'>
         <div class='content' id='content_cart'>
         <?php
-        if ( !isset ($_SESSION['user']) && !isset($_COOKIE['user'])){
-            echo "<h3></h3>";
-            echo "<a href='index.php'SING UP></a>";
-            echo "<a href='login.php'>LOGIN</a>";
-        }
         create_header( ['home','products','login','logout'] );
-       
-        $cart -> show_cart();
-        
+        if ( isset($_GET['action']) && $_GET['action']=='delete_cart'){
+            $order_id = $_GET['order_id'];
+            $cart -> delete_cart();
+            echo "<div><p>Your order id is <h4> $order_id</h4> </p></div>";
+        }
+        if ( !isset ($_SESSION['user']) && !isset($_COOKIE['user'])){
+            create_form('Sing_in','verify_email.php', 'POST' , ['hidden','email','text','text','text','password','submit'], ['action','email','name','last_name','phone_number','password','submit'], ['register','','','','','','submit',],['','email','name','last name', 'phone number', 'password','']);
+            echo "<h3>Already have an account</h3>";
+            echo "<a href='login.php'>LOGIN</a>";
+        }else{
+            $cart -> show_cart();
+        }
         ?>
 
         </div>

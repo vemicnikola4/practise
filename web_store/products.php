@@ -14,7 +14,7 @@ include "functions.php";
 <body>
     <div class='main_contaner' id='main_container_products'>
     <?php
-    create_header( ['home','products','login','logout'] );
+    create_header( ['home','products','cart','login','logout'] );
     echo "<div class='content'>";
     if ( isset($_SESSION['user'])){
         echo "<h1>HELLO USER YOU ARE WELCOME</h1>";
@@ -32,7 +32,7 @@ include "functions.php";
 
     }
     
-    create_footer( ['home','products','login','logout',] );
+    create_footer( ['home','products','login','logout','product_forms'] );
     ?>
     </div>
     </div>

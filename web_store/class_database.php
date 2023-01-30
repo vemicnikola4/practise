@@ -90,6 +90,10 @@ class Database{
         }
         $update_quantity = $this -> comand ( "UPDATE `products` SET `quantity`=$new_quantity WHERE barcode=$barcode");
     }
+    function insert_into_cart($order_id, $barcode, $quantity, $total, $date){
+        $this -> comand ( "INSERT INTO `cart`(`order_id`, `barcode`, `quantity`, `total`, `date`) VALUES ('$order_id', '$barcode', $quantity, $total, '$date')" );
+    }
 }
 $base= new Database('zadatak_web_store');
+
 ?>

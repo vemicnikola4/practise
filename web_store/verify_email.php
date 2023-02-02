@@ -15,6 +15,7 @@ if (!isset($_SESSION['verification_code'])){
         if ( isset( $_POST ['email']) && isset( $_POST ['name']) && isset( $_POST ['last_name']) && isset( $_POST ['phone_number']) && isset( $_POST ['password'])){
             $email = $_POST ['email'];
             $name = $_POST ['name'];
+            $_SESSION['name'] = $name;
             $last_name = $_POST ['last_name'];
             $phone_number = $_POST ['phone_number'];
             $password = $_POST ['password'];
@@ -57,7 +58,6 @@ if (!isset($_SESSION['verification_code'])){
             unset ( $_SESSION['verification_code'] );
             echo "<p>Succsessfuly inserted</p>";
             header ( 'location: login.php' );
-        }else{
             echo "<p> Wrong verification code try again </p>";
             create_form ('Enter your verifaction code ','verify_email.php', 'verify_email', 'POST', ['text','submit'], ['verification_code','submit'],['enter ferification code','']);
         }   

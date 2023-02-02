@@ -20,7 +20,25 @@ include 'class_cart.php';
         if ( isset($_GET['action']) && $_GET['action']=='delete_cart'){
             $order_id = $_GET['order_id'];
             $cart -> delete_cart();
-            echo "<div><p>Your order id is <h4> $order_id</h4> </p></div>";
+            echo "<div><p>Theh detailes of your purhase has been sent to your email </p></div>";
+        }
+        if ( isset($_GET['action']) && $_GET['action']=='search_order'){
+            $order_id = $_GET['order_id'];
+            $base->show_cart($order_id);
+            
+            echo "</div>";       
+            create_footer( ['home','products','login','logout'] );
+            exit;
+        }
+        if (isset ($_GET['action']) && $_GET['action'] == 'submit' ){
+            echo "<div style='border:solid width:200px'>";
+            echo "<p>Would you like to prossead with your purchase</p>";
+            echo "<a href='submit.php?action=confirm_purchase'>YES</a><br> <a href='cart.php'>BACK TO CART</a>";
+            echo "</div>";
+            echo "</div>";
+            create_footer( ['home','products','login','logout'] );
+            exit;
+
         }
         if ( !isset ($_SESSION['user']) && !isset($_COOKIE['user'])){
             create_form('Sing_in','verify_email.php', 'POST' , ['hidden','email','text','text','text','password','submit'], ['action','email','name','last_name','phone_number','password','submit'], ['register','','','','','','submit',],['','email','name','last name', 'phone number', 'password','']);
@@ -29,8 +47,10 @@ include 'class_cart.php';
         }else{
             $cart -> show_cart();
         }
+       
+        // var_dump($_SESSION['cart']);
+       
         ?>
-
         </div>
     </div>
     <?php

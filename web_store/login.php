@@ -20,6 +20,7 @@ if ( isset($_POST['action'])  &&  $_POST['action'] == 'login'){
     for ( $i = 0; $i < count ($all_users); $i++){
         if ( $all_users[$i]['email'] == $email && $all_users[$i]['password'] == $password ){
             $_SESSION['user'] = $email;
+            $_SESSION['name'] = $all_users[$i]['name'];
             // if ( $checkbox == true ){
             //     setcookie('user',$email, time() + (60 * 60 * 24 * 30), "/");
             // }
@@ -33,7 +34,7 @@ if ( isset($_POST['action'])  &&  $_POST['action'] == 'login'){
         }
     }
 }
-    
+
 
 echo "</div>";
 echo "</div>";

@@ -1,5 +1,4 @@
 <?php
-
 function create_form($title,$form_action, $method, $array_type, $array_name, $array_value, $array_placeholder){
     echo "<div class='form_div'>";
     echo "<h3>$title</h3>";
@@ -42,27 +41,27 @@ function validate_password($password){
     }
     if ( $has == true ){
         $count+=1;
-    }    
+    }
     $number = ['0','1','2','3','4','5','6','7','8','9'];
     $has = false;
     for ( $i = 0; $i < count ( $number ); $i++){
         if ( strpos ($password, $number[$i]) !== false){
             $has = true;
         }
-    }    
+    }
     if ( $has == true){
         $count+=1;
-    }    
+    }
     $special_caracter = ['@','$','%','&'];
     $has = false;
     for ( $i = 0; $i < count ( $special_caracter ); $i++){
         if ( strpos ($password, $special_caracter[$i]) !== false){
             $has = true;
         }
-    }    
+    }
     if ( $has == true){
         $count+=1;
-    }   
+    }
     if ($count == 3){
         return true;
     }else{
@@ -71,9 +70,9 @@ function validate_password($password){
 }
 function show_all_products($all_products){
     echo "<div class='all_products_container'>";
-    echo "<div class='product_container'>";
-    echo "<table>";
     for ( $i= 0; $i < count( $all_products ); $i++){
+        echo "<div class='product_container'>";
+        echo "<table>";
         $barcode = $all_products[$i]['barcode'];
         $name = $all_products[$i]['name'];
         $picture = $all_products[$i]['picture'];
@@ -84,11 +83,24 @@ function show_all_products($all_products){
         echo "<tr><td>Price: ". $description. "</td></tr>";
         echo "<tr><td>Price:". $price. " e</td></tr>";
         echo "<tr><td> <a href='add_to_cart.php?action=add_to_cart&barcode=$barcode'>ADD TO CART</a></td></tr>";
-        echo "</div>";
+        echo "</table>";
+        echo "</    div>";
     }
+    echo "</div>";
+}
+function show_one_product ( $product ){
+    echo "<div class='all_products_container'>";
+   
+    echo "<div class='product_container'>";
+    echo "<table>";
+    echo "<th><h3>".$product[0]['name']."</h3></th>";
+    echo "<tr><td><div class='image_div'><img style='border:solid black;width:200px; height:250px' src='pictures/".$product[0]['picture']."'></div></td></tr>";
+    echo "<tr><td>Price: ". $product[0]['description']. "</td></tr>";
+    echo "<tr><td>Price:". $product[0]['price']. " e</td></tr>";
+    echo "<tr><td> <a href='add_to_cart.php?action=add_to_cart&barcode=".$product[0]['barcode']."'>ADD TO CART</a></td></tr>";
     echo "</table>";
     echo "</div>";
-    echo "</div>";
+
 }
 
 ?>

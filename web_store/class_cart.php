@@ -53,7 +53,7 @@ class Cart{
         echo "<a href='add_to_cart.php?action=delete_cart'>DELETE CART</a>";
         echo "</div>";
         echo "<div>";
-        echo "<a href='submit.php?action=submit'>SUBMIT</a>";
+        echo "<a href='cart.php?action=submit'>SUBMIT</a>";
         echo "</div>";
         echo "</div >";
         $_SESSION['cart']=$this -> cart_items;

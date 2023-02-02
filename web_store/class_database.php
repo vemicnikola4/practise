@@ -41,7 +41,7 @@ class Database{
         $last_name = $this -> conn -> real_escape_string ($last_name );
         $phone_number = $this -> conn -> real_escape_string ($phone_number );
         $password = $this -> conn -> real_escape_string ($password );
-        $insert = $this -> comand ( "INSERT INTO `users`(`email`, `name`, `last_name`, `phone_number`, `password`) VALUES ('$email', '$name',' $last_name', '$phone_number', '$password' )");  
+        $insert = $this -> comand ( "INSERT INTO `users`(`email`, `name`, `last_name`, `phone_number`, `password`) VALUES ('$email', '$name',' $last_name', '$phone_number', '$password' )");
     }
     function all_products(){
         $all_products = $this -> select(" SELECT * FROM products ");
@@ -67,7 +67,7 @@ class Database{
         $picture = $this -> conn -> real_escape_string ($picture );
         $price = $this -> conn -> real_escape_string ($price );
         $quantity = $this -> conn -> real_escape_string ($quantity );
-        $insert = $this -> comand ( "INSERT INTO `products`(`barcode`, `name`, `category`, `description`, `picture`, `price`, `quantity`) VALUES ('$barcode', '$name', '$category', '$description', '$picture', $price, $quantity)" );  
+        $insert = $this -> comand ( "INSERT INTO `products`(`barcode`, `name`, `category`, `description`, `picture`, `price`, `quantity`) VALUES ('$barcode', '$name', '$category', '$description', '$picture', $price, $quantity)" );
     }
     function delite_product($barcode){
         $delite = $this -> comand ( " DELETE FROM products WHERE barcode=$barcode ");
@@ -92,6 +92,39 @@ class Database{
     }
     function insert_into_cart($order_id, $barcode, $quantity, $total, $date){
         $this -> comand ( "INSERT INTO `cart`(`order_id`, `barcode`, `quantity`, `total`, `date`) VALUES ('$order_id', '$barcode', $quantity, $total, '$date')" );
+    }
+    function cart($order_id){
+        $all_users = $this -> select(" SELECT * FROM cart WHERE order_id = '$order_id' ");
+        if( $all_users["sucssesful"] == true ){
+            return $all_users['array'];
+        }else{
+            die('Neuspesan upit' . $all_users['message']);
+        }
+    }
+    function show_cart($order_id){
+        $cart = $this->cart($order_id);
+        echo "<div class='form_div'>";
+        echo "<table border=solid >";
+        echo "<th>BARCODE</th><th>QUANTITY</th><th>TOTAL</th>";
+        $cart_total=0;
+        $total_items=0;
+        for ( $i = 0; $i < count ($cart); $i++){
+            $cart_total+=$cart[$i]['total'];
+            $total_items+=$cart[$i]['quantity'];
+            echo "<tr>";
+            echo "<td><a href='show_one_product.php?action=show_product&barcode=".$cart[$i]['barcode']."'>".$cart[$i]['barcode']."</a></td>";
+            echo "<td>".$cart[$i]['quantity']."</td>";
+            echo "<td>".$cart[$i]['total']." e</td>";
+            echo "</tr>";
+        }
+        echo "<th>TIME OF PURCHASE</th><TH>NUMBER OF ITEMS</TH><th>CART TOTAL</th>";
+           echo "</tr>";
+           echo "<td>".$cart[0]['date']."</td>";
+           echo "<td>".$total_items."</td>";
+           echo "<td>".$cart_total."</td>";
+           echo "<tr>";
+        echo "</table>";
+        echo "</div>";
     }
 }
 $base= new Database('zadatak_web_store');

@@ -51,6 +51,22 @@ class Database{
             die('Neuspesan upit' . $all_products['message']);
         }
     }
+    function price_filter_all_products($p_1,$p_2){
+        $all_products = $this -> select(" SELECT * FROM products WHERE price >=$p_1 AND price <= $p_2 ");
+        if( $all_products["sucssesful"] == true ){
+            return $all_products['array'];
+        }else{
+            die('Neuspesan upit' . $all_products['message']);
+        }
+    }
+    function category_filter_all_products($category){
+        $all_products = $this -> select(" SELECT * FROM products WHERE category='$category' ");
+        if( $all_products["sucssesful"] == true ){
+            return $all_products['array'];
+        }else{
+            die('Neuspesan upit' . $all_products['message']);
+        }
+    }
     function one_product($barcode){
         $all_products = $this -> select(" SELECT * FROM products WHERE barcode=$barcode ");
         if( $all_products["sucssesful"] == true ){
@@ -125,6 +141,14 @@ class Database{
            echo "<tr>";
         echo "</table>";
         echo "</div>";
+    }
+    function select_price(){
+        $all_products = $this -> select(" SELECT barcode,price FROM products ");
+        if( $all_products["sucssesful"] == true ){
+            return $all_products['array'];
+        }else{
+            die('Neuspesan upit' . $all_products['message']);
+        }
     }
 }
 $base= new Database('zadatak_web_store');

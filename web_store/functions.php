@@ -4,7 +4,7 @@ function create_form($title,$form_action, $method, $array_type, $array_name, $ar
     echo "<h3>$title</h3>";
     echo "<form action='$form_action' method='$method'>";
     for ( $i = 0; $i < count( $array_type ); $i++){
-        echo "<input type='$array_type[$i]' name='$array_name[$i]' value= '$array_value[$i]' placeholder= '$array_placeholder[$i]' required>";
+        echo "<input type='$array_type[$i]' name='$array_name[$i]' value= '$array_value[$i]' placeholder = '$array_placeholder[$i]' required>";
     }
     echo "</form>";
     echo "</div>";
@@ -100,7 +100,6 @@ function show_one_product ( $product ){
     echo "<tr><td> <a href='add_to_cart.php?action=add_to_cart&barcode=".$product[0]['barcode']."'>ADD TO CART</a></td></tr>";
     echo "</table>";
     echo "</div>";
-
 }
 
 ?>

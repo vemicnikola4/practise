@@ -53,6 +53,9 @@ include "functions.php";
         //*******Ascending or discending order */
         if ( isset($_GET['action']) && $_GET['action'] == 'ascending_or_descending'){
             $select_order = $_GET['select_order'];
+            if ( $select_order == 'ascending_or_descending'){
+                header ( 'Location: products.php' );
+            }
             if ( $select_order == 'descending'){
                 $all_products = $base -> all_products();
                 $price_intiger_array=[];

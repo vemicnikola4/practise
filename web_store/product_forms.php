@@ -69,6 +69,7 @@ if ( isset($_POST['action']) && $_POST['action'] =='login_employee'){
             create_form('Add product quantity','add_product_quantity.php', 'POST', ['hidden','text','text','submit'], ['action','barcode','quantity','submit'], ['add_quantity','','','submit'], ['','barcode','add quantity','']);
 
             create_form('Delite product','delite_product.php', 'POST', ['hidden','text','submit'], ['action','barcode','submit'], ['delite_product','','delete'], ['','enter barcode','']);
+            create_form('Products in stock','products_stock.php', 'POST',['hidden','text','submit'], ['action','barcode','submit'], ['show_products_in_stock','','show'], ['','all or barcode','']);
     }
         ?>
    

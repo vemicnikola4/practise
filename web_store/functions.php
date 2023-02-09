@@ -101,5 +101,52 @@ function show_one_product ( $product ){
     echo "</table>";
     echo "</div>";
 }
-
+function show_products_stocks($all_products){
+    echo "<div class='form_div' id='products_stocks_table_div'>";
+    echo "<table border=solid>";
+    echo "<th>BARCODE</th><th>NAME</th><th>CATEGORY</th><th>DESCRIPTION</th><th>PRICE</th><th>QUANTITY</th>";
+    for ( $i= 0; $i < count( $all_products ); $i++){
+        $barcode = $all_products[$i]['barcode'];
+        $name = $all_products[$i]['name'];
+        $category = $all_products[$i]['category'];
+        $description = $all_products[$i]['description'];
+        $price = $all_products[$i]['price'];
+        $quantity = $all_products[$i]['quantity'];
+        echo "<tr>";
+        echo "<td>$barcode</td>";
+        echo "<td>$name</td>";
+        echo "<td>$category</td>";
+        echo "<td>$description</td>";
+        echo "<td>$price</td>";
+        echo "<td>$quantity</td>";
+        echo "<td><a href='change_product.php'>CHANGE</a></td>";
+        echo "</tr>";
+    }
+    echo "</table>";
+    echo "</div>";
+}
+function show_one_product_in_stocks($product){
+    echo "<div class='form_div' id='products_stocks_table_div'>";
+    echo "<table border=solid>";
+    echo "<th>BARCODE</th><th>NAME</th><th>CATEGORY</th><th>DESCRIPTION</th><th>PRICE</th><th>QUANTITY</th>";
+    
+        $barcode = $product[0]['barcode'];
+        $name = $product[0]['name'];
+        $category = $product[0]['category'];
+        $description = $product[0]['description'];
+        $price = $product[0]['price'];
+        $quantity = $product[0]['quantity'];
+        echo "<tr>";
+        echo "<td>$barcode</td>";
+        echo "<td>$name</td>";
+        echo "<td>$category</td>";
+        echo "<td>$description</td>";
+        echo "<td>$price</td>";
+        echo "<td>$quantity</td>";
+        echo "<td><a href='change_product.php'>CHANGE</a></td>";
+        echo "</tr>";
+    
+    echo "</table>";
+    echo "</div>";
+}
 ?>

@@ -18,8 +18,15 @@ if (isset ($_GET['action']) && $_GET['action'] == 'confirm_purchase' ){
             $price = $cart_items[$i]['price'];
             $total =  $price * $quantity;
             // echo $cart_items[$i]['item_total'];
-            $base -> insert_into_cart($order_id, $barcode, $quantity, $total, $time);
+            $product = $base->one_product($barcode);
+            $available_quantity=$product[0]['quantity'];
             $base -> reduce_quantity($barcode,$quantity);
+            if ( $product[0]['quantity'] < 0){
+                echo "<p>Not aveilable, try another products or change quantity</p>";
+                $base->add_quantity($barcode,$available_quantity);
+                exit;
+            }
+            $base -> insert_into_cart($order_id, $barcode, $quantity, $total, $time);
     }
     $array_string="";
     for ( $i = 0; $i < count($cart_items); $i++ ){

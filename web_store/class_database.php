@@ -68,7 +68,7 @@ class Database{
         }
     }
     function one_product($barcode){
-        $all_products = $this -> select(" SELECT * FROM products WHERE barcode=$barcode ");
+        $all_products = $this -> select(" SELECT * FROM products WHERE barcode='$barcode' ");
         if( $all_products["sucssesful"] == true ){
             return $all_products['array'];
         }else{

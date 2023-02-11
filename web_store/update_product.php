@@ -58,7 +58,7 @@ if ( isset($_POST['action']) && $_POST['action'] =='update_product' ){
             <input type="text" name="quantity" placeholder="quantity" required><br>
             <input type="submit" name="submit" value="submit" required><br> 
         </form>
-        </div>
+    </div>
     <?php
 }
 

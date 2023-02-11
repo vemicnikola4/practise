@@ -14,24 +14,29 @@ include "functions.php";
 <body>
     <div class='main_contaner' id='main_container_products'>
     <?php
-    create_header( ['home','products','cart','login','logout'] );
     echo "<div class='content'>";
+    create_header( ['home','products','cart','login','logout'] );
     if ( isset($_SESSION['user'])){
         echo "<h1>HELLO USER YOU ARE WELCOME</h1>";
 
         //******PRICE FILTER FROM TO */
         if (isset($_POST['action']) && $_POST['action']=='price_filter'){
             $price_range= $_POST['price_range'];
+            if ($price_range == 'price_range'){
+                header ( 'Location: products.php' );
+
+            }
             $pos = strpos($price_range,'-');
             $p_1 = substr($price_range,0,$pos);
             $p_2 = substr($price_range,$pos+1);
             $all_products = $base->price_filter_all_products($p_1,$p_2);
             if ( $all_products == []){
                 echo "<p>No products found for such a criteria</p>";
+                echo "<a href='products.php'>BACK TO PRODUCTS</a>";
             }
             show_all_products($all_products);
-            create_footer( ['home','products','login','logout','product_forms'] );
             echo "</div>";
+            create_footer( ['home','products','login','logout','product_forms'] );
             echo "</div>";
             exit;
         }
@@ -39,14 +44,18 @@ include "functions.php";
         //******CATEGORY FILTER SHOW ONLY PRODUCTS FROM SERTAIN CATEGORY */
         if (isset($_POST['action']) && $_POST['action']=='category_filter'){
             $category= $_POST['product_category'];
+            if ( $category == 'product_category'){
+                header ( 'Location: products.php' );
+            }
             $all_products = $base->category_filter_all_products($category);
             if ( $all_products == []){
                 echo "<p>No products found for category</p>";
             }
             show_all_products($all_products);
+            echo "</div>";
             create_footer( ['home','products','login','logout','product_forms'] );
             echo "</div>";
-            echo "</div>";
+    
             exit;
         }
 
@@ -88,8 +97,8 @@ include "functions.php";
                         show_one_product($product);
                     }                
             }
-            create_footer( ['home','products','login','logout','product_forms'] );
             echo "</div>";
+            create_footer( ['home','products','login','logout','product_forms'] );
             echo "</div>";
             exit;
         }
@@ -102,12 +111,12 @@ include "functions.php";
         echo "<form class='select_form' id='price_filter_form' action='products.php' method='POST'>";
             echo "<input type='hidden'  name='action' value='price_filter'>";
             echo '<select  name="price_range" >';
-            echo '<option value="Price range">Price range</option>';
+            echo '<option value="price_range">Price range</option>';
             echo '<option value="0-20">0-20 e</option>';
             echo '<option value="20-50">20-50 e</option>';
             echo '<option value="50-80">50-80 e</option>';
             echo '<option value="80-100">80-100 e</option>';
-            echo '<option value=">100">100-1000</option>';
+            echo '<option value="100-1000">100-1000 e</option>';
             echo '</select><br>';
             echo "<input type='submit'  value='Search'>";
 
@@ -151,47 +160,9 @@ include "functions.php";
         show_all_products($all_products);
 
     }
-    // $all_p = $base->price_filter_all_products(10,50);
-    // var_dump($all_p);
- 
-    
-    
-    //     $price = $price_intiger_array[$i];
-    //     for ( $j = 0; $j < count($all_products); $j++){
-    //         if ($all_products[$j]['price'] == $price){
-    //             $barcode = $all_products[$j]['barcode'];
-    //             $product= $base->one_product($barcode);
-    //             array_push($descending_products_list,$product);
-    //         }
-    //     }
-    // }
-    // $des_list_copy = $descending_products_list;
-    // for ( $i = 0; $i < count($descending_products_list); $i++ ){
-    //     $a=0;
-    //     for ( $j = 0; $j < count($des_list_copy); $j++){
-    //         if ( $descending_products_list[$i] == $des_list_copy[$j]){
-    //             $a++;
-    //         }
-    //     }
-    //     echo $a;
-    //     if ( $a > 1){
-    //         array_splice( $descending_products_list,$i,1);
-    //     }
-
-    // }
-    // for ( $i = 1; $i < count($descending_products_list); $i++){
-    //     show_one_product ( $descending_products_list[$i] );
-    // }
-    // if ( $descending_products_list[0] == $des_list_copy[2]){
-    //     echo 'ima';
-    // }else{
-    //     echo 'nema';
-    // }
-//var_dump($descending_products_list);
-// array_splice($this->cart_items, $i, 1);
+    echo "</div> ";
     create_footer( ['home','products','login','logout','product_forms'] );
     ?>
-    </div>
     </div>
 </body>
 </html>

@@ -84,7 +84,7 @@ function show_all_products($all_products){
         echo "<tr><td>Price:". $price. " e</td></tr>";
         echo "<tr><td> <a href='add_to_cart.php?action=add_to_cart&barcode=$barcode'>ADD TO CART</a></td></tr>";
         echo "</table>";
-        echo "</    div>";
+        echo "</div>";
     }
     echo "</div>";
 }
@@ -119,7 +119,7 @@ function show_products_stocks($all_products){
         echo "<td>$description</td>";
         echo "<td>$price</td>";
         echo "<td>$quantity</td>";
-        echo "<td><a href='change_product.php'>CHANGE</a></td>";
+        echo "<td><a href='change_product.php?barcode=$barcode'>CHANGE</a></td>";
         echo "</tr>";
     }
     echo "</table>";
@@ -143,7 +143,8 @@ function show_one_product_in_stocks($product){
         echo "<td>$description</td>";
         echo "<td>$price</td>";
         echo "<td>$quantity</td>";
-        echo "<td><a href='change_product.php'>CHANGE</a></td>";
+        echo "<td><a href='change_product.php?barcode=$barcode'>CHANGE</a></td>";
+        echo "<td><a href='change_product.php?barcode=$barcode&action=delite'>DELITE</a></td>";
         echo "</tr>";
     
     echo "</table>";

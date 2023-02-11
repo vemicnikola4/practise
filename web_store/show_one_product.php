@@ -14,8 +14,8 @@ include_once "functions.php";
 <body>
     <?php
     echo " <div class ='main_container>'";
-    create_header( ['home','products','cart','login','logout'] );
     echo "<div class='content'>";
+    create_header( ['home','products','cart','login','logout'] );
     if ( isset($_GET['action']) && $_GET['action'] =='show_product' ){
         $barcode = $_GET['barcode'];
         $product = $base->one_product($barcode);
@@ -24,8 +24,8 @@ include_once "functions.php";
 
   
     echo "</div>";
-    echo "</div>";
     create_footer( ['home','products','cart','login','logout',] );
+    echo "</div>";
     
 ?>
     

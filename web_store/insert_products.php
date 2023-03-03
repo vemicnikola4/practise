@@ -1,6 +1,9 @@
 <?php
+ob_start();
 include "class_database.php";
 include "functions.php";
+include 'style.css';
+
 echo "<div class='main_container'>";
 
 create_header( ['home','products','login','logout'] );
@@ -79,6 +82,8 @@ if ( isset($_POST['action']) && $_POST['action'] =='updateing_product' ){
         echo "<P>Not Inserted</p>";
     }else{
         header ('Location:product_forms.php?action=product_updated');
+        ob_end_flush();
+
     }
 }
 if ( isset($_GET['action']) && $_GET['action'] =='confirm_new_product'){

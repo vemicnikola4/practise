@@ -2,6 +2,7 @@
 session_start();
 include_once "class_database.php";
 include_once "functions.php";
+include_once "style.css";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,13 +17,16 @@ include_once "functions.php";
     echo " <div class ='main_container>'";
     echo "<div class='content'>";
     create_header( ['home','products','cart','login','logout'] );
+    echo "<div class='all_products_container'>";
+
     if ( isset($_GET['action']) && $_GET['action'] =='show_product' ){
         $barcode = $_GET['barcode'];
         $product = $base->one_product($barcode);
         show_one_product ( $product );
     }
 
-  
+    
+    echo "</div>";
     echo "</div>";
     create_footer( ['home','products','cart','login','logout',] );
     echo "</div>";

@@ -1,17 +1,15 @@
 <?php
+ob_start();
 session_start();
+include_once 'style.css';
 include "functions.php";
 include "class_database.php";
 
-echo "<div class='main_container'>";
-create_header( ['home','products','login','logout'] );
-echo "<div class='content'>";
-if ( isset($_SESSION['user']) || isset ( $_COOKIE['user'] ) ){
-    header ('Location:index.php');
 
-}else{
-    create_form('Log in','login.php', 'POST', ['hidden', 'email' , 'password' ,  'submit' ], ['action', 'email', 'password' ,'submit'], ['login','','','submit','false'],['', 'email', 'password' ,'']);
-}
+
+echo "<div class='main_container'>";
+echo "<div class='content' id='login_content'>";
+create_header( ['home','products','login','logout'] );
 
 if ( isset($_POST['action'])  &&  $_POST['action'] == 'login'){
     $email =  $_POST['email'];
@@ -24,9 +22,11 @@ if ( isset($_POST['action'])  &&  $_POST['action'] == 'login'){
             // if ( $checkbox == true ){
             //     setcookie('user',$email, time() + (60 * 60 * 24 * 30), "/");
             // }
-            header ('Location:index.php');
+            header('Location:index.php');
+            ob_end_flush();
         }else{
-            echo "<p>Invalid email or password try again!</p>";
+            echo "<div class='message' id='invalid_email_login'><p>Invalid email or password try again!</p></div>";
+            create_form('Log in','login.php', 'POST', ['hidden', 'email' , 'password' ,  'submit' ], ['action', 'email', 'password' ,'submit'], ['login','','','submit','false'],['', 'email', 'password' ,'']);
             echo "</div>";
             echo "</div>";
             create_footer( ['home','products','login','logout'] );
@@ -35,9 +35,19 @@ if ( isset($_POST['action'])  &&  $_POST['action'] == 'login'){
     }
 }
 
+if ( isset($_SESSION['user']) || isset ( $_COOKIE['user'] ) ){
+    header('Location:index.php');
+
+}else{
+    create_form('Log in','login.php', 'POST', ['hidden', 'email' , 'password' ,  'submit' ], ['action', 'email', 'password' ,'submit'], ['login','','','submit','false'],['', 'email', 'password' ,'']);
+}
+
+
+
 
 echo "</div>";
-echo "</div>";
 create_footer( ['home','products','login','logout'] );
+
+echo "</div>";
 
 ?>

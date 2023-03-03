@@ -119,7 +119,7 @@ class Database{
     }
     function show_cart($order_id){
         $cart = $this->cart($order_id);
-        echo "<div class='form_div'>";
+        echo "<div class='table_div'>";
         echo "<table border=solid >";
         echo "<th>BARCODE</th><th>QUANTITY</th><th>TOTAL</th>";
         $cart_total=0;

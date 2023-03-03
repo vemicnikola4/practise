@@ -27,7 +27,7 @@ class Cart{
         $_SESSION['cart'] = $this -> cart_items;
     }
     function show_cart(){
-        echo "<div class='form_div'>";
+        echo "<div class='table_div' id='cart_div'>";
         echo "<table border=solid >";
         echo "<th>BARCODE</th><th>NAME</th><th>PRICE</th><th>QUANTITY</th><th>TOTAL PRICE</th>";
         $cart_total=0;
@@ -40,15 +40,18 @@ class Cart{
         echo "<td>".$this->cart_items[$i]['price']." e</td>";
         echo "<td>".$this->cart_items[$i]['quantity']."</td>";
         echo "<td>".$item_total." e</td>";
-        echo "<td><a  href='add_to_cart.php?action=add_quantity&barcode=$barcode'><button style='width:100px'>+</button></a></td>";
-        echo "<td><a  href='add_to_cart.php?action=reduce_quantity&barcode=$barcode'><button style='width:100px'>-</button></a></td>";
-        echo "<td><a href='add_to_cart.php?action=delite_item&barcode=$barcode'>DELETE</a></td>";
+        echo "<td><a  href='add_to_cart.php?action=add_quantity&barcode=$barcode'><button >+</button></a></td>";
+        echo "<td><a  href='add_to_cart.php?action=reduce_quantity&barcode=$barcode'><button >-</button></a></td>";
+        echo "<td><a href='cart.php?action=delite_item&barcode=$barcode'>DELETE</a></td>";
         echo "</tr>";
         $cart_total += $item_total;
         }
         echo "<br>";
-        echo "<tr style='border:none'><td style='border:none'>TOTAL</td><td style='border:none'></td><td style='border:none'></td><td style='border:none'></td><td style='border:none'>".$cart_total." e</td></tr>";
+        echo "<tr class='total'><td >TOTAL</td><td ></td><td ></td><td ></td><td >".$cart_total." e</td></tr>";
         echo "</table>";
+        echo "<div>";
+        echo "<a href='products.php'>ADD MORE PRODUCTS TO CART</a>";
+        echo "</div>";
         echo "<div>";
         echo "<a href='add_to_cart.php?action=delete_cart'>DELETE CART</a>";
         echo "</div>";

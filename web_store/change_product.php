@@ -2,6 +2,7 @@
 session_start();
 include "class_database.php";
 include "functions.php";
+include "style.css";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,8 +15,8 @@ include "functions.php";
 <body>
 <div class='main_container'>
     <?php
-     echo "<div class='content'>";
      create_header( ['home','products','cart','login','logout'] );
+     echo "<div class='content' id='change_product_content'>";
 $barcode = $_GET['barcode'];
 $product =  $base->one_product($barcode);
 if ( isset($_GET['action']) && $_GET['action']=='delite'){
@@ -43,17 +44,17 @@ show_one_product_in_stocks($product);
     <input type="hidden" name="action" value="updateing_product">
     <input type="text" name="barcode" value= "<?php echo $barcode ?>" placeholder="barcode" required><br>
     <input type="text" name="name" placeholder="name" required><br>
-    <select name="category" >
+    <select name="category" class="select" >
         <option value="obuca">Obuca</option>
         <option value="odeca">Odeca</option>
         <option value="nakit">Nakit</option>
         <option value="kucni_aparati">Kucni aparati</option>
     </select><br>
-    <textarea style='font-family:roboto; color:grey' name="description" required>Enter description</textarea><br>
+    <textarea class="text_area" name="description" required>Enter description</textarea><br>
     <input type="hidden" name="picture" value="<?php echo $product[0]['picture']  ?>" required><br>
     <input type="text" name="price" placeholder="price" required><br>
     <input type="text" name="quantity" placeholder="quantity" required><br>
-    <input type="submit" name="submit" value="submit" required><br> 
+    <input type="submit" class="submit" name="submit" value="submit" required><br> 
 </form>
 </div>
 <?php

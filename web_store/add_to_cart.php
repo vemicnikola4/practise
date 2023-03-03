@@ -34,12 +34,7 @@ if (isset( $_GET['action']) && $_GET['action'] == 'reduce_quantity' ){
     header ('Location:cart.php');
 
 }
-if (isset( $_GET['action']) && $_GET['action'] == 'delite_item' ){
-    $barcode = $_GET['barcode'];
-    $cart -> delite_item($barcode);
-    header ('Location:cart.php');
 
-}
 if (isset( $_GET['action']) && $_GET['action'] == 'delete_cart' ){
     $cart -> delete_cart();
     header ('Location:cart.php');

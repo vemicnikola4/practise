@@ -2,6 +2,7 @@
 session_start();
 include "class_database.php";
 include "functions.php";
+include "style.css";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,8 +15,8 @@ include "functions.php";
 <body>
 <div class='main_container'>
     <?php
-    echo "<div class='content'>";
     create_header( ['home','products','cart','login','logout'] );
+    echo "<div class='content' id='product_stocks_content'>";
     if (isset( $_POST['action'] ) &&  $_POST['action']== 'product_delited'){
         $barcode = $_GET['barcode'];
         echo "<p>Product $barcode succssesfuly delited</p>";

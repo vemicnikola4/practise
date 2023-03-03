@@ -1,0 +1,421 @@
+
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&family=Rubik:wght@400;500&display=swap');
+
+body{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+    background-color: #ECF2FF;
+
+   
+}
+
+.main_container{
+    display: flex;
+    flex-direction: column;
+}
+.content{
+    min-height: 100vh;  
+}
+.header{
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    align-content: center;
+    position: sticky;
+    top:0;
+    background-color: white;
+    font-family: 'Quicksand', sans-serif;
+    border-bottom: solid 3px  #ECF2FF;
+    z-index: 1;
+}
+#products_content{
+    display: flex;
+    flex-wrap:wrap;
+    flex-direction: row;
+}
+.header ul{
+    list-style-type: none;
+    display: flex;
+    flex-wrap:wrap;
+    flex-direction: row;
+    min-width: 400px;
+    
+}
+.header ul li{
+    margin: 0 10px 0 10px;
+    font-size: large;
+    
+}
+.footer ul li{
+    font-size: large;
+    list-style-type: none;
+
+}
+.header ul li a {
+    text-decoration: none;
+}
+.footer ul li a {
+    text-decoration: none;
+
+}
+.all_products_container{
+    display: flex;
+    flex-wrap:wrap;
+    flex-direction: row;
+    justify-content:left;
+    align-content: center;
+    min-height: 100vh;
+    max-width: 78.5vw;
+
+
+}
+.footer{
+    background-color: black;
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+    position: relative;
+    bottom: 0;
+}
+#form_divSingin,  #form_divLogin{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content: center;
+    align-content: center;
+
+}
+#form_div_wrapSingin,  #form_div_wrapLogin{
+    display: flex;
+    flex-direction:column;
+    max-width: 450px;
+    max-height: 420px;
+    align-content: center;
+    justify-content: center;
+    background: linear-gradient(to bottom right, #9bb6f0, #097c8c );
+    box-shadow: 0 25px 25px -5px black;
+    padding: 20px 20px 10px 20px;
+    margin-top: -50px;
+    border-radius: 5px;
+}
+#form_div_wrapSingin input, #form_div_wrapLogin input{
+    margin-bottom: 10px;
+    width: 100%;
+    height: 45px;
+    font-size: 16px;
+    padding-left: 5px;
+    border: none;
+    transition: 500ms ease all;
+}
+#input_wrapSingin .submit, #input_wrapLogin .submit{
+    width: 150px;
+    border: solid;
+    border-width: 0.1;
+    border-radius: 10px;
+    color: #097c8c;
+    font-size: 20px;
+    margin-top: 5px;
+
+}
+#form_div_wrapSingin h3, #form_div_wrapLogin h3{
+    text-align: center;
+    font-weight:bolder;
+    font-size: 20px;
+}
+#form_div_wrapLogin h3{
+    margin-top: 0px;
+}
+#form_div_wrapSingin input:focus, #form_div_wrapLogin input:focus{
+    outline: none;
+    border: none;
+    box-shadow: 0px 2px 0px 0px  black;
+    border-color: #247580;
+}
+#form_div_wrapSingin input:hover, #form_div_wrapLogin input:hover{
+    box-shadow: 0px 2px 2px 0px  black;
+
+}
+#input_wrapSingin .submit:hover ,#input_wrapLogin .submit:hover{
+    box-shadow: 2px 2px 2px 0px  black;
+    cursor: pointer;
+    text-shadow: 1px 1px 1px black;
+}
+#input_wrapSingin, #input_wrapLogin{
+    max-width: 320px;
+}
+.all_products_container{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: #ECF2FF;
+}
+.product_container{
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    box-shadow: 15px 15px 15px -5px rgb(222, 222, 204) ;
+    padding: 15px;
+    background-color: #ECF2FF;
+    border: none;
+    transition: 1500ms ease all;
+    font-family: 'Rubik', sans-serif;
+
+
+}
+.product_container h3{
+    margin-bottom: 35px;
+}
+.product_container img {
+    transition: 400ms ease all; 
+    max-width: 250px; 
+    object-fit:cover;
+} 
+.product_container:hover{
+    box-shadow: 15px 15px 15px -5px  black ;
+    background-color:#d5d9e2;
+    border-bottom: solid black ;
+    border-right: solid black ; 
+}
+.product_container:hover img{
+    transform: scale(1.1);
+}
+.product_container:hover .button_add_to_cart{
+    transform: scale(1.3,1.3);
+    text-shadow: 1px 1px 1px black;
+}
+.wrap_product_container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.wrap_product_container table{
+    text-align: center;
+}
+.content #invalid_email_login{
+    margin-left: 35px;
+    margin-top: 35px;
+}
+.header #site_logo{
+    background-image:url('pictures/logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 150px;
+    
+}
+#products_content{
+    display: flex;
+    flex-direction: row;
+}
+#all_filters_div{
+    display: flex;
+    flex-direction: column;
+    max-width: 350px;
+    align-items:center;
+    background-color: white;
+    padding-left: 25px;
+    max-height: 380px;
+    
+}
+.image_div img{
+    width: 250px;
+    height: 320px;
+    margin-bottom: 40px;
+}
+div .message{
+    margin-top: 15px;
+    margin-left: 15px;
+}
+.button_add_to_cart{
+    margin-top: 30px;
+    width: 150px;
+    border: solid;
+    border-width: 0.1;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 20px;
+    transition: 600ms ease all ;
+    background-color: black;
+}
+.button_add_to_cart:hover{
+    transform: scale(1.1,1.1);
+    cursor: pointer;
+    background-color: white;
+    color: black;
+}
+#all_filters_div{
+    width: 280px;
+    font-family:sans-serif;
+    padding-top: 15px;
+    color:rgb(0, 0, 0);
+
+}
+.back_arrow{
+    width: 30px; 
+    height:25px; 
+    background-color: #ffffff;
+    
+}
+.back_arrow img{
+    width: 25px; 
+    height:20px; 
+    margin-bottom: -5px;
+    
+}
+
+#log_in_sing_in_products_php{
+    padding-left: 50px;
+}
+#filter_form_div{
+    padding:15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: left;
+    font-family: 'Rubik', sans-serif;
+    border-bottom: solid 3px#d5d9e2;
+}
+#filter_form_div .select_div{
+    margin-top: 20px;
+    max-width: 250px;
+}
+#filter_form_div .select_div select{
+    width: 200px;
+    height: 35px;
+    padding-left: 3px;
+    border: none;
+    border-bottom: solid 2px #000000;
+    text-align:start;
+}
+p.select_title{
+    margin-bottom: 0px;
+}
+#filter_form .submit{
+    margin-top: 20px;
+    height: 30px;
+    width: 90px;
+    border-radius: 5px;
+    transition: 300ms ease all;
+
+}
+#filter_form .submit:hover{
+    cursor: pointer;
+    background-color: white;
+    box-shadow: 2px 2px 2px gray;
+}
+#filter_form .select_div select{
+    transition: 1000ms ease all;
+}
+#filter_form .select_div select:hover{
+    cursor: pointer;
+    box-shadow: 2px 0px 2px 0px  black;
+    background-color:#d5d9e2;
+
+
+}
+#filter_form .select_div select option:hover{
+    cursor: pointer;
+}
+
+.table_div table{
+    margin-bottom: 20px;
+    box-shadow: 5px 5px 5px 0px  black;
+}
+#cart_div table button{
+    width: 45px;
+    font-weight:bolder;
+    color:white;
+    background-color: #000000;
+}
+#cart_div table button:hover{
+    transform: scale(1.1,1.1);
+    cursor: pointer;
+}
+#cart_div table tr .total{
+    border-left: none;
+    border-right: none;
+}
+
+.form_div{
+    font-family: 'Rubik', sans-serif;
+    width: 250px;
+    margin-bottom: 30px;
+}
+
+.form_div input{
+    width: 250px;
+    height: 30px;
+    margin-top: 10px;
+    padding: 5px;
+    transition: 700ms ease all;
+
+}
+.form_div .submit{
+    width: 70px;
+    height: 30px;
+    transition: 500ms ease all;
+    
+}
+.form_div .submit:hover{
+    box-shadow: 2px 2px 2px black;
+    cursor: pointer;
+    background-color: white;
+}
+.form_div input:hover{
+    outline: none;
+    border: none;
+    box-shadow: 0px 2px 0px 0px  black;
+}
+.form_div .select{
+    margin-top: 10px;
+    font-family: 'Rubik', sans-serif;
+    height: 30px;
+    color: gray;
+    transition: 400ms ease all;
+}
+.form_div .select:hover{
+    cursor: pointer;
+    background-color:gray ;
+    color: white;
+}
+.text_area{
+    font-family: 'Rubik', sans-serif;
+    margin-top: 10px;
+    width: 250px;
+    height: 150px;
+    padding-top: 10px;
+    padding-left: 5px;
+    color: gray;
+
+
+}
+#product_stocks_content,#product_forms_content,#change_product_content, #update_product_content,#delite_product_content{
+    padding-left: 25px;
+    padding-top: 25px;
+}
+.form_wraper{
+    transition: 300ms ease all;
+}
+.form_wraper .select:hover{
+    cursor: pointer;
+    background-color:gray ;
+    color: white;
+}
+#content_cart{
+    padding-left: 15px;
+    padding-top: 15px;
+}
+.list_div ul li{
+    list-style-type: none;
+}
+.list_div ul{
+    margin-left: -35;
+}
+</style>

@@ -36,15 +36,8 @@ function create_footer( $array ){
     for ( $i = 0 ; $i < count( $array ); $i++){
         echo "<li><a href='$array[$i].php'>$array[$i]</a></li>";
     }
+    echo "</div>";
     echo "<h3>Copyright of webstore</h3>";
-    echo "</div>";
-
-    echo "<div>";
-    echo "</div>";
-
-    echo "<div>";
-    echo "</div>";
-
     echo "</div>";
 }
 function validate_password($password){

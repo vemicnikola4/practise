@@ -24,7 +24,7 @@ if ( isset($_POST['action']) && $_POST['action'] =='add_quantity' ){
         exit;
     }
 ?>
-    <div class='table_div' style='border:solid black; width:250px'>
+    <div class='table_div'>
     <table>
     <ul>
         <sapn>Confirmation</sapn>

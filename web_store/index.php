@@ -27,14 +27,13 @@ include_once 'style.css';
         ob_end_flush();
 
     }
-  
     echo "</div>";
     create_footer( ['home','products','cart','login','logout','product_forms'] );
     echo "</div>";
     
     
     ?>
-
+   
 
 </body>
 </html>

@@ -33,10 +33,10 @@ if ( isset($_POST['action']) && $_POST['action'] =='insert_product' ){
    
 
 ?>
-    <div class='table_div' style='border:solid black; width:250px'>
+    <div class='ul_div'>
     <table>
     <ul>
-        <sapn>Confirmation</sapn>
+        <li><h4>Confirmation</h4></li>
         <li>Barcode: <?php echo $barcode?></li>
         <li>Name: <?php echo $name?></li>
         <li>Category: <?php echo $category?></li>
@@ -102,6 +102,7 @@ if ( isset($_GET['action']) && $_GET['action'] =='confirm_new_product'){
     }
 }
 echo "</div>";
-echo "</div>";
 create_footer( ['home','products','login','logout','product_forms'] );
+echo "</div>";
+
 ?>

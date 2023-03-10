@@ -142,12 +142,56 @@ class Database{
         echo "</table>";
         echo "</div>";
     }
+    function show_cart_for_employees($order_id){
+        echo "<div class='cart_for_employees'>";
+        $cart = $this->cart($order_id);
+        echo "<table>";
+        echo "<th> ORDER ID</th><th>BARCODE</th><th>QUANTITY</th><th>TOTAL</th>";
+        $cart_total=0;
+        $total_items=0;
+        for ( $i = 0; $i < count ($cart); $i++){
+            $cart_total+=$cart[$i]['total'];
+            $total_items+=$cart[$i]['quantity'];
+            echo "<tr>";
+            echo "<td></td>";
+            
+            echo "<td><a href='show_one_product.php?action=show_product&barcode=".$cart[$i]['barcode']."'>".$cart[$i]['barcode']."</a></td>";
+            echo "<td>".$cart[$i]['quantity']."</td>";
+            echo "<td>".$cart[$i]['total']." e</td>";
+            echo "</tr>";
+        }
+        echo "<th class='order_id'>".$cart[0]['order_id']. "</th><th>TIME OF PURCHASE</th><TH>NUMBER OF ITEMS</TH><th>CART TOTAL</th>";
+           echo "<tr>";
+           echo "<td ></td>";
+           echo "<td>".$cart[0]['date']."</td>";
+           echo "<td>".$total_items."</td>";
+           echo "<td>".$cart_total." e</td>";
+           echo "</tr>";
+        echo "</table>";
+        echo "</div>";
+    }
     function select_price(){
         $all_products = $this -> select(" SELECT barcode,price FROM products ");
         if( $all_products["sucssesful"] == true ){
             return $all_products['array'];
         }else{
             die('Neuspesan upit' . $all_products['message']);
+        }
+    }
+    function all_cart(){
+        $all_cart = $this -> select(" SELECT * FROM cart ");
+        if( $all_cart["sucssesful"] == true ){
+            return $all_cart['array'];
+        }else{
+            die('Neuspesan upit' . $all_cart['message']);
+        }
+    }
+    function data_filter($from_date,$to_date){
+        $all_cart = $this -> select(" SELECT * FROM cart WHERE date BETWEEN '$from_date' AND '$to_date'");
+        if( $all_cart["sucssesful"] == true ){
+            return $all_cart['array'];
+        }else{
+            die('Neuspesan upit' . $all_cart['message']);
         }
     }
 }

@@ -81,6 +81,7 @@ if ( isset($_POST['action']) && $_POST['action'] =='login_employee'){
         ?>
         <div class='form_div new_product_form_div' id='new_preoduct_form_div'>
         <h3>Add new product</h3>
+        <div class='form_div_wrap' id='form_div_wrap_ne_product_form'>
         <form id="new_product_form" action="insert_products.php" method='POST'>
             <input type="hidden" name="action" value="insert_product">
             <input type="text" name="barcode" placeholder="barcode" required><br>
@@ -97,8 +98,49 @@ if ( isset($_POST['action']) && $_POST['action'] =='login_employee'){
             <input type="text" name="price" placeholder="price" required><br>
             <input type="text" name="quantity" placeholder="quantity" required><br>
             <input type="submit" class="submit" name="submit" value="submit" required><br>
-         
         </form>
+        </div>
+        </div>
+
+            <!-- Today yesterday last week last month orders -->
+        <div class='form_div'>
+        <div class='form_div_wrap' id='form_div_wrap_search_product_by_date_select'>
+        <form  action="search_order_by_date.php" method="GET">
+        <h3>Show orders</h3>
+            <select name="date_select" class='select' >
+                <option value="-">-</option>
+                <option value="today">today</option>
+                <option value="yesterday">yesterday</option>
+                <option value="last_week">last week</option>
+                <option value="last_month">last month</option>
+            </select><br>
+            <input type="submit" class='submit'>
+        </form>
+        </div>
+        </div>
+
+            <!-- from date do date filter -->
+            <div class='form_div'>
+        <div class='form_div_wrap' id='form_div_wrap_search_product_by_date_select'>
+        <form  action="search_order_by_date.php" method="GET">
+            <h3>From date to date</h3>
+            <input type="hidden" name="action" value="from_date_to_date">
+            <input type="date" name="from_date">
+            <input type="date" name="to_date">
+            <input type="submit" class='submit'>
+        </form>
+        </div>
+        </div>
+
+        <!-- filter for exact date -->
+        <div class='form_div'>
+        <div class='form_div_wrap' id='form_div_wrap_search_product_by_date'>
+        <form  action="search_order_by_date.php" method="GET">
+        <h3>Search orders by date</h3>
+            <input type="date" name="date">
+            <input type="submit" class='submit'>
+        </form>
+        </div>
         </div>
         <?php
             create_form('Update product','update_product.php', 'POST', ['hidden','text','submit'], ['action','barcode','submit'], ['update_product','','submit'], ['','enter barcode','']);
@@ -109,13 +151,13 @@ if ( isset($_POST['action']) && $_POST['action'] =='login_employee'){
             create_form('Show products in stocks','products_stock.php', 'POST',['hidden','text','submit'], ['action','barcode','submit'], ['show_products_in_stock','','show'], ['','all or barcode','']);
     }
         ?>
-   
-    
+        
+
     </div>
-</div>
 <?php
 create_footer( ['home','products','login','logout','product_forms'] );
 ?>
+</div>
 
 </body>
 </html>
